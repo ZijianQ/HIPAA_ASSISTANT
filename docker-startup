@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ "$1" = "build" ]; then
+    docker build -t medical-coding-app .
+elif [ "$1" = "deploy" ] || [ "$1" = "deploy-gpu" ]; then
+    docker run -p 8501:8501 medical-coding-app
+else
+    echo "Usage: ./docker-startup [build|deploy|deploy-gpu]"
+fi
