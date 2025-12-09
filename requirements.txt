@@ -3,3 +3,9 @@ streamlit
 sentence-transformers
 numpy
 ollama
+pandas
+beautifulsoup4
+requests
+PyPDF2
+lxml
+tqdm

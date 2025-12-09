@@ -21,6 +21,27 @@ This project implements a local LLM-based RAG system with HIPAA legal documents.
 - Chatbot powered by Ollama
 - Streamlit web interface
 
+# Project Structure
+
+```
+medical-coding/
+├── app.py                     # Streamlit UI
+├── rag_engine.py              # RAG search + answer generator
+├── pipeline.py                # One-click full pipeline
+├── download.py                # ECFR HTML downloader
+├── download_pdf.py            # Alternative PDF downloader
+├── chunk_hipaa.py             # Chunk builder (sentence + window)
+├── build_faiss.py             # Embedding + FAISS index builder
+├── data/
+│   ├── raw/                   # Original HTML/PDF
+│   ├── clean/                 # Plain text extracted
+│   ├── hipaa_chunks.json      # Final chunk dataset
+│   └── hipaa_faiss_index.faiss
+├── background.png             # UI background image
+├── requirements.txt
+└── Dockerfile
+```
+
 ## Installation
 
 ### 1. Install Ollama
@@ -36,6 +57,10 @@ ollama pull qwen2.5:1.5b
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
+
+### 4. running the pipelind
+
+python3 pipeline.py
 
 ### 4. Run Streamlit app
 
@@ -58,10 +83,11 @@ User → Streamlit UI
 
 ---
 
-## Docker
+## Docker Quick start
 
 docker build -t hipaa-rag .
 docker run -p 8501:8501 hipaa-rag
+acess at http://localhost:8501
 
 ## Data Resource Link
 
